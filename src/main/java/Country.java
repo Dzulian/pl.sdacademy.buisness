@@ -2,6 +2,10 @@ public class Country {
     private final int retirementAge;
     private final String countryName;
 
+    public static Country fromName(String countryName){
+        return new Country(70, countryName); //metoda statyczna; test metody fabrycznej
+    }
+
     public Country(int retirementAge, String countryName) {
         this.retirementAge = retirementAge;
         this.countryName = countryName;
@@ -19,3 +23,4 @@ public class Country {
         return countryName;
     }
 }
+
