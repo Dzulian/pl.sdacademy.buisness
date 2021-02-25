@@ -1,22 +1,21 @@
 public class Country {
-    private final int retireAge;
+    private final int retirementAge;
     private final String countryName;
 
-    public Country(int retireAge, String countryName) {
-        this.retireAge = retireAge;
+    public Country(int retirementAge, String countryName) {
+        this.retirementAge = retirementAge;
         this.countryName = countryName;
     }
 
-    public int getRetireAge() {
-        return retireAge;
+    public int getRetirementAge() {
+        return retirementAge;
     }
 
     public String getCountryName() {
         return countryName;
     }
 
-    @Override
     public String toString() {
-        return  countryName;
+        return countryName;
     }
 }

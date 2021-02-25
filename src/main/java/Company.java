@@ -1,3 +1,4 @@
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Arrays;
 
@@ -5,20 +6,6 @@ public class Company {
     private final Country country;
     private final String companyName;
     private Employee[] employees;
-
-    public Employee[] getEmployees() {
-        return employees;
-    }
-
-    public void setEmployees(Employee[] employees) {
-        if ( employees == null ) {
-            this.employees = new Employee[0];
-        }
-        else {
-            this.employees = employees;
-        }
-
-    }
 
     public Company(Country country, String companyName) {
         this.country = country;
@@ -38,30 +25,38 @@ public class Company {
         return companyName;
     }
 
-    public Employee[] getRetiredEmployees(LocalDate date){
-        Employee[] retiredEmployees = new Employee[employees.length];
+    public Employee[] getEmployees() {
+        return employees;
+    }
+
+    public void setEmployees(Employee[] employees) {
+        if (employees != null) {
+            this.employees = employees;
+        }
+    }
+
+    public Employee[] getRetiredEmployees(LocalDate localDate){
+        Employee[] retiredEmployess = new Employee[employees.length];
         int counter = 0;
-        for (Employee employee: this.employees) {
-            if (employee.isRetired(getCountry(),date)) {
-                retiredEmployees[counter]=employee;
+        for (Employee employee : employees){
+            if(employee.isRetired(localDate,country)){
+                retiredEmployess[counter] = employee;
                 counter++;
             }
         }
-        return Arrays.copyOf(retiredEmployees,counter);
+        return Arrays.copyOf(retiredEmployess,counter);
 
     }
-
     public Employee[] getRetiredEmployees(){
         return getRetiredEmployees(LocalDate.now());
     }
-
     public Employee[] getRetiredEmployees(String date){
         return getRetiredEmployees(LocalDate.parse(date));
     }
+    public void raise(BigDecimal payRaise){
+        for (Employee employee : employees) {
+            employee.raise(payRaise);
 
-    public void raise(double payRaise) {
-        for (Employee employee: employees) {
-            employee.setSalary(employee.getSalary()+payRaise);
         }
     }
 }
