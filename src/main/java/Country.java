@@ -1,19 +1,22 @@
 public class Country {
-    //tworzenie własnej klasy
-    final private int retirementAge;
-    final private String countryName;
+    private final int retireAge;
+    private final String countryName;
 
-    public Country (int retirementAge, String countryName){
-    this.retirementAge = retirementAge; //this aby widział nasze zmienne
+    public Country(int retireAge, String countryName) {
+        this.retireAge = retireAge;
         this.countryName = countryName;
     }
-   public int getRetirementAge () {
-        return retirementAge;
+
+    public int getRetireAge() {
+        return retireAge;
     }
-public String getCountryName () {
+
+    public String getCountryName() {
         return countryName;
-}
-public String toString () {
-        return countryName;
-}
+    }
+
+    @Override
+    public String toString() {
+        return  countryName;
+    }
 }
